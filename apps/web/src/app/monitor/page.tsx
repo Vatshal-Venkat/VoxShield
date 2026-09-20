@@ -433,15 +433,25 @@ export default function MonitorPage() {
             }}
           />
           <div className="relative">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10">
-              <PhoneIncoming className="h-9 w-9 animate-pulse text-[var(--accent)]" />
+            <div className="relative mx-auto mb-6 grid h-32 w-32 place-items-center">
+              <span className="adapter-wave" />
+              <span className="adapter-wave adapter-wave--2" />
+              <span className="adapter-wave adapter-wave--3" />
+              <div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10">
+                <PhoneIncoming className="h-9 w-9 animate-pulse text-[var(--accent)]" />
+              </div>
             </div>
             <div className="kicker">Simulated incoming call</div>
             <h1 className="font-serif mt-3 text-3xl sm:text-4xl">Unknown number</h1>
+            <p className="mt-1 font-mono text-xs tracking-wide text-[var(--faint)]">+91 98XXX XXXXX · not in contacts</p>
             <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-[var(--muted)]">
-              Accept to stream the laptop mic into VoxShield Core. Keep this screen in the
-              foreground — the mic cannot stay live in the background.
+              Accept to stream the laptop mic into VoxShield Core. Dual scores stay empty until
+              there is speech — the engine does not guess on silence.
             </p>
+            <div className="mt-6 flex justify-center gap-6">
+              <RiskRing title="Authenticity" score={0} band="insufficient" size={108} />
+              <RiskRing title="Fraud" score={0} band="insufficient" size={108} />
+            </div>
             {warming ? (
               <p className="mt-4 text-xs text-[var(--review)]">Engine waking up…</p>
             ) : null}
