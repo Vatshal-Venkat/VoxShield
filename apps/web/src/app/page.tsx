@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowDown, ArrowRight, Building2, Code2, Phone, Settings } from "lucide-react";
 import { Atmosphere } from "@/components/atmosphere";
 import { BrandMark } from "@/components/brand-mark";
+import { CoreStatus } from "@/components/core-status";
+import { LandingCoreStory } from "@/components/landing-core-story";
 import { PhoneMock3D } from "@/components/phone-mock-3d";
 
 export default function HomePage() {
@@ -24,8 +26,12 @@ export default function HomePage() {
               </span>
             </span>
           </Link>
-          <div className="flex items-center gap-4 sm:gap-5">
-            <Link href="/guide" className="hidden text-xs text-[var(--muted)] hover:text-[var(--text)] md:inline">
+          <div className="flex items-center gap-3 sm:gap-5">
+            <CoreStatus className="hidden sm:inline-flex" />
+            <Link href="/#core" className="hidden text-xs text-[var(--muted)] hover:text-[var(--text)] md:inline">
+              Two scores
+            </Link>
+            <Link href="/guide" className="hidden text-xs text-[var(--muted)] hover:text-[var(--text)] lg:inline">
               How it works
             </Link>
             <Link
@@ -43,6 +49,7 @@ export default function HomePage() {
 
         <section className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10 lg:px-12 lg:py-0 xl:gap-8">
           <div className="max-w-2xl">
+            <p className="hero-kicker">SIH26104 · AICTE Cyber Security Cell</p>
             <h1 className="font-serif text-5xl leading-[1.02] tracking-tight text-[var(--text)] sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
               VoxShield
             </h1>
@@ -50,6 +57,11 @@ export default function HomePage() {
               The AI voice-integrity layer for calls and banking — authenticity and fraud as
               separate scores, not a dialler.
             </p>
+            <div className="mt-7 flex flex-wrap gap-2">
+              <span className="hero-chip">Authenticity ≠ fraud</span>
+              <span className="hero-chip">REST + WebSocket</span>
+              <span className="hero-chip">Host policy, not a bank</span>
+            </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/demo" className="btn-primary">
                 Run judge demo
@@ -156,15 +168,27 @@ export default function HomePage() {
                 </div>
               </Link>
             </div>
+
+            <p className="mt-10 text-center text-sm text-[var(--muted)]">
+              Room too noisy for a live call?{" "}
+              <Link href="/demo" className="text-[var(--accent)] hover:underline">
+                Run the judge demo without a mic
+              </Link>
+              .
+            </p>
           </div>
         </section>
 
+        <LandingCoreStory />
+
         <footer className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-[var(--line)] px-6 py-8 text-xs text-[var(--faint)] sm:flex-row sm:justify-between sm:px-10 lg:px-12">
-          <span>VoxShield Core · SIH26104</span>
+          <span>VoxShield Core · SIH26104 · Feature-only logs · CPU only</span>
           <span className="flex flex-wrap gap-4">
             <Link href="/settings">Settings</Link>
             <Link href="/demo">Demo</Link>
             <Link href="/guide">Guide</Link>
+            <Link href="/monitor">Call</Link>
+            <Link href="/adapters/bank">Bank</Link>
           </span>
         </footer>
       </main>

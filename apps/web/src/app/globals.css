@@ -1329,6 +1329,253 @@ html.phone-cursor-live * {
   50% { opacity: 1; transform: scale(1.03); }
 }
 
+.hero-kicker {
+  margin-bottom: 1.1rem;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* —— Dual-score story —— */
+#core,
+#adapters {
+  scroll-margin-top: 8px;
+}
+
+@supports (animation-timeline: view()) {
+  .core-pillar,
+  .core-case-stage,
+  .core-pipeline {
+    animation: adapters-rise 0.85s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 38%;
+  }
+}
+
+.core-story-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(800px 420px at 80% 0%, var(--page-glow-b), transparent 55%),
+    radial-gradient(640px 360px at 8% 90%, var(--page-glow-a), transparent 50%);
+}
+
+.core-pillar {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.25rem 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%),
+    color-mix(in srgb, var(--bg-card) 80%, transparent);
+}
+
+.core-case {
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.core-case:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+.core-case.is-active {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  background: var(--accent-dim);
+}
+
+.core-case-stage {
+  border: 1px solid var(--line-strong);
+  border-radius: 28px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.04), transparent 42%),
+    color-mix(in srgb, var(--bg-card) 88%, transparent);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.verdict-pill {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.7rem 0.9rem;
+  min-width: 8.5rem;
+  background: color-mix(in srgb, var(--bg-card) 65%, transparent);
+}
+
+.verdict-pill strong {
+  font-size: 12px;
+  font-weight: 560;
+}
+
+.verdict-pill span {
+  font-size: 11px;
+  color: var(--faint);
+}
+
+.verdict-pill.is-active {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: var(--accent-dim);
+}
+
+/* —— Pipeline —— */
+.core-pipeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.core-pipeline--compact {
+  gap: 0.4rem;
+}
+
+.core-pipeline-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 5.5rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.85rem 0.9rem;
+  background: color-mix(in srgb, var(--bg-card) 72%, transparent);
+  transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+
+.core-pipeline--compact .core-pipeline-step {
+  min-height: 0;
+  padding: 0.55rem 0.65rem;
+}
+
+.core-pipeline-index {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+}
+
+.core-pipeline-label {
+  margin-top: 0.35rem;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.core-pipeline-hint {
+  margin-top: 0.25rem;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--faint);
+}
+
+.core-pipeline-step.is-current {
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
+  background: var(--accent-dim);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.core-pipeline-step.is-done {
+  border-color: color-mix(in srgb, var(--genuine) 35%, var(--line));
+}
+
+.core-pipeline-step.is-done .core-pipeline-index {
+  color: var(--genuine);
+}
+
+.core-pipeline-join {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .core-pipeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Demo theater / policy rail —— */
+.demo-script {
+  position: relative;
+  min-height: 7.5rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface-muted);
+  padding: 0.9rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.demo-script-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 2px;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  animation: pulse-live 1s ease-in-out infinite;
+}
+
+.policy-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.policy-rail-step {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+}
+
+.policy-rail-step.is-done {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: var(--accent-dim);
+}
+
+.policy-rail-step.is-alert {
+  border-color: color-mix(in srgb, var(--high) 45%, var(--line));
+  background: var(--high-dim);
+}
+
+@media (max-width: 700px) {
+  .policy-rail {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.score-meter {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.score-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 500ms ease;
+}
+
 @media (max-width: 640px) {
   .adapters-core-line {
     flex-wrap: wrap;
@@ -1355,7 +1602,11 @@ html.phone-cursor-live * {
   .adapters-core-line,
   .adapter-panel,
   .adapter-wave,
-  .adapter-ledger {
+  .adapter-ledger,
+  .demo-script-caret,
+  .core-pillar,
+  .core-case-stage,
+  .core-pipeline {
     animation: none;
   }
 

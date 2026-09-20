@@ -33,6 +33,8 @@ export function RiskRing({
   const pct = band === "insufficient" ? 0 : Math.min(100, Math.max(0, score)) / 100;
   const color = COLORS[band];
   const ticks = 36;
+  const scoreClass = size < 130 ? "text-3xl" : size < 180 ? "text-4xl" : "text-5xl";
+  const titleClass = size < 130 ? "text-[8px] tracking-[0.16em]" : "text-[10px] tracking-[0.22em]";
 
   return (
     <div className="relative grid place-items-center" style={{ width: size, height: size }}>
@@ -95,8 +97,8 @@ export function RiskRing({
       </svg>
       <div className="absolute inset-0 grid place-items-center text-center">
         <div>
-          <div className="text-[10px] uppercase tracking-[0.22em] text-[var(--faint)]">{title}</div>
-          <div className="font-serif text-5xl leading-none tracking-tight" style={{ color }}>
+          <div className={`uppercase text-[var(--faint)] ${titleClass}`}>{title}</div>
+          <div className={`font-serif leading-none tracking-tight ${scoreClass}`} style={{ color }}>
             {band === "insufficient" ? "—" : score}
           </div>
           <div

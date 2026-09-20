@@ -27,6 +27,7 @@ import { clsx } from "@/lib/format";
 import { usePreferences } from "@/store/preferences-provider";
 import { useSession } from "@/store/session-provider";
 import { BrandMark } from "./brand-mark";
+import { CoreStatus } from "./core-status";
 import { ModeSwitch } from "./mode-switch";
 
 const PRIMARY = [
@@ -211,6 +212,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <span className={clsx("h-1.5 w-1.5 rounded-full", live ? "live-dot bg-[var(--high)]" : "bg-[var(--faint)]")} />
               {live ? "Live" : "Idle"}
             </span>
+            <CoreStatus className="hidden md:inline-flex" />
             {band ? (
               <span className={`hidden rounded-full bg-band-${band} px-2.5 py-1 text-[11px] capitalize sm:inline band-${band}`}>
                 {band}
