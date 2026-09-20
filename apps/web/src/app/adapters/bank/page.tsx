@@ -220,6 +220,23 @@ export default function BankAdapterPage() {
         </div>
       </section>
 
+      <ol className="policy-rail" aria-label="Host policy rail">
+        {[
+          { id: "score", label: "Core score", hint: result ? `${result.verdict.replaceAll("_", " ")}` : "Waiting", done: Boolean(result), alert: false },
+          { id: "hold", label: "Auto-hold", hint: blocked ? "Transfer frozen" : "Not triggered", done: blocked, alert: blocked },
+          { id: "mfa", label: "MFA gate", hint: awaitingMfa ? "Callback required" : "Closed", done: awaitingMfa, alert: awaitingMfa },
+          { id: "seal", label: "Audit seal", hint: auditSeal ? "SHA-256 logged" : "No event yet", done: Boolean(auditSeal), alert: false },
+        ].map((item) => (
+          <li
+            key={item.id}
+            className={clsx("policy-rail-step", item.done && "is-done", item.alert && "is-alert")}
+          >
+            <div className="text-[10px] uppercase tracking-[0.14em] text-[var(--faint)]">{item.label}</div>
+            <div className="mt-1 text-sm">{item.hint}</div>
+          </li>
+        ))}
+      </ol>
+
       <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
         <section className="card space-y-4 p-5 sm:p-6">
           <div className="kicker">Input → Core SDK</div>
