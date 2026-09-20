@@ -41,6 +41,37 @@ export function EvidenceBrief({
         <IdentityChip identity={result.identity} />
       </div>
 
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div>
+          <div className="mb-1.5 flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[var(--faint)]">
+            <span>Authenticity</span>
+            <span className="tabular">{result.authenticity.score}</span>
+          </div>
+          <div className="score-meter">
+            <span
+              style={{
+                width: `${result.authenticity.score}%`,
+                background: result.authenticity.band === "high" ? "var(--high)" : result.authenticity.band === "review" ? "var(--review)" : "var(--genuine)",
+              }}
+            />
+          </div>
+        </div>
+        <div>
+          <div className="mb-1.5 flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[var(--faint)]">
+            <span>Fraud</span>
+            <span className="tabular">{result.fraud.score}</span>
+          </div>
+          <div className="score-meter">
+            <span
+              style={{
+                width: `${result.fraud.score}%`,
+                background: result.fraud.band === "high" ? "var(--high)" : result.fraud.band === "review" ? "var(--review)" : "var(--genuine)",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
       <p className="text-sm leading-6 text-[var(--muted)]">{copy.body}</p>
       <p className="rounded-lg border border-[var(--accent)]/25 bg-[var(--accent-dim)] px-3 py-2 text-sm text-[var(--accent)]">
         Host action: {copy.action}
